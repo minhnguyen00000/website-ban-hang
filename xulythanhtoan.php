@@ -12,7 +12,7 @@
                 exit;
             }
             $idGiocheck = $datacheck['ma_dh'];
-            //$idGio = $_GET['id'];
+            $idGio = $_GET['id'];
             if($idGiocheck === $idGio){
                 // print_r($_GET);
                 $sql ="UPDATE `don_hang` SET `trangthai`=?,`ghichu`=? WHERE `ma_dh`=? and `ma_kh`= ?";
