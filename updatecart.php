@@ -27,9 +27,9 @@
         $query->execute();
         $dataitem = $query->fetchALL();
         $tongtien =0;
-        // foreach($dataitem as $v){
-        //     $tongtien += $v['soluong']*$v['dongia'];
-        // }
+        foreach($dataitem as $v){
+            $tongtien += $v['soluong']*$v['dongia'];
+        }
         $sqlUpdateGia = "UPDATE `don_hang` SET `thanhtien`=? WHERE `ma_dh` = ?";
         $queryupdate = $pdo->prepare($sqlUpdateGia);
         $queryupdate->execute([$tongtien,$idgio]);
