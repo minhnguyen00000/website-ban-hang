@@ -1,12 +1,18 @@
-<?php 
-  if(!isset($_SESSION)){
+<?php
   session_start();
+  if(!isset($_SESSION['dangnhap'])){
+       header('Location:index.php');
   }
-  include('../connect.php');
-  ?>
-  <?php 
-
-  if(isset($_POST['dangnhap'])){
+    if(isset($_GET['login'])){
+    $dangxuat=$_GET['login'];
+   }else{
+    $dangxuat='';
+   }
+   if($dangxuat=='dangxuat'){ 
+    session_destroy();
+    header('Location:index.php');
+   }
+   if(isset($_POST['dangnhap'])){
     $taikhoan=$_POST['taikhoan'];
     $matkhau=md5($_POST['matkhau']);
     if($taikhoan==''|| $matkhau==''){
@@ -26,28 +32,25 @@
         }
     }
   }
-  ?>
-
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Đăng nhập ADMIN</title>
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chào mừng đến với trang ADMIN</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
-  </head>
-  <body>
-    <h2 align="center"> Đăng nhập Admin </h2>
-    <div class="col-md-6">
-      <div class="form-group">
-        <form action="" method="POST">
-        <label> Tài khoản </label>
-        <input type="text" name="taikhoan" placeholder="Điền tài khoản" class="form-control"></br>
-        <label> Mật khẩu </label>
-        <input type="password" name="matkhau" placeholder="Điền mật khẩu" class="form-control"></br>
-        <input type="submit" name="dangnhap" class="btn btn-primary" value="Đăng nhập Admin">
-      </form>
-      </div>
-    </div>
-    
-  </body>
-  </html>
+</head>
+<body>
+  <?php 
+  if(isset($_SESSION['ma'])){?>
+    <p>Xin chào <?php echo $_SESSION['dangnhap'] ?> <a href="logout.php"> Đăng xuất </a></p>
+  <?php
+  }else{
+    header('Location:index.php');
+  }
+  ?>
+  
+  <?php include("menu.php") ?>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<?php 
+	session_start();
+	session_start(); 
+  if(isset($_SESSION['ma'])){
+  	$_SESSION['ma']='';
+  	session_destroy();
+header('Location:index.php');
+  }else{
+    header('Location:index.php');
+  }
+?>
