@@ -15,6 +15,7 @@ session_start();
 		<div class="women-in">
 		<?php include('include/content-left-sanpham-search.php'); ?>
 		<?php include('include/content-right-nam.php'); ?>	
+		<?php echo sua loi ?>
 	<!--conten-down-->
 	<?php include('include/content-down.php'); ?>
 	<!---->
