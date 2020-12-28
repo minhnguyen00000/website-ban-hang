@@ -39,7 +39,7 @@ if (isset($_POST['btnThem']))
            if ($uploadOk == 0) {
                echo "File upload bị lỗi";// Thỏa hết điều kiện
            } else {
-               if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+               //if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                     $query = $pdo->prepare('INSERT INTO sanpham(tensanpham,maloaisp,manhacungcap,manhanvien,motatomtat,motachitiet,giaban,hinh,tinhtrang,dem) 
                     VALUES(:tensanpham,:maloaisp,:manhacungcap,:manhanvien,:motatomtat,:motachitiet,:giaban,:hinh,:tinhtrang,:dem)');
 
